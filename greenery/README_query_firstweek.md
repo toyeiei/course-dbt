@@ -5,7 +5,7 @@
 1. how many users do we have? 
 
 ```
-/* we found 130 user ids in users table
+/* we found 130 user ids in users table */
 SELECT 
     COUNT(user_id) 
 FROM dbt_kasidis_s.stg_users;
@@ -40,7 +40,7 @@ WHERE delivered_at IS NOT NULL;
 4. how many users have only made one purchase? two purchases? three+ purchases?
 
 ```
-/* 25 one purchase, 28 two purchases, 71 three or more purchases
+/* 25 one purchase, 28 two purchases, 71 three or more purchases */
 SELECT 
   CASE 
     WHEN n = 1 THEN 'one purchase'
