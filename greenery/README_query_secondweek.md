@@ -45,3 +45,4 @@ Some tests in my project
 - positive_values
 - max_five_digit_zipcode
 - country_is_united_states
+- assert_orders_by_user_is_positive (singular test)
