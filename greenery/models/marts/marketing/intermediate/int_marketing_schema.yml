@@ -1,0 +1,27 @@
+version: 2
+
+models: 
+  - name: int_po_users_joined 
+    columns:
+    - name: user_id
+    - name: first_name 
+    - name: last_name
+    - name: email
+    - name: phone_number
+    - name: zipcode
+    - name: state
+    - name: country
+    - name: order_id
+    - name: created_at_utc
+    - name: product_name
+    - name: product_price
+    - name: product_quantity
+    - name: order_cost
+    - name: shipping_cost
+    - name: order_total
+    - name: promo_discount
+    - name: tracking_id
+    - name: shipping_service
+    - name: estimated_delivery_at_utc
+    - name: delivered_at_utc
+    - name: order_status
