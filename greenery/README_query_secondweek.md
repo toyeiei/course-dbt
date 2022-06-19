@@ -34,3 +34,9 @@ FROM (
 - Product: the `fact_page_views` table came directly from `stg_events` table
 
 I use intermediate tables in Core and Marketing marts.
+
+4. Image of DAG full lineage is in the greenery/img_dag folder
+
+5. Added tests to ensure high quality data in our data marts
+
+- We can run tests every morning and set alerts to our discord/ slack channel so that our analytics engineering team can monitor and solve any issues beginning of the day. Using `dbt build` or `dbt run` + `dbt test` every time.
