@@ -1,6 +1,4 @@
-# READ ME DOC 
-
-## first week assignment of dbt greenery project - corise
+## First week assignment of dbt greenery project - corise
 
 1. how many users do we have? 
 
