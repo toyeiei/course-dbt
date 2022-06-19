@@ -40,3 +40,8 @@ I use intermediate tables in Core and Marketing marts.
 5. Added tests to ensure high quality data in our data marts
 
 - We can run tests every morning and set alerts to our discord/ slack channel so that our analytics engineering team can monitor and solve any issues beginning of the day. Using `dbt build` or `dbt run` + `dbt test` every time.
+
+Some tests in my project
+- positive_values
+- max_five_digit_zipcode
+- country_is_united_states

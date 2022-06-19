@@ -3,6 +3,50 @@ version: 2
 # https://docs.getdbt.com/docs/building-a-dbt-project/tests
 
 models:
+  - name: stg_addresses
+    columns:
+      - name: address_id
+        tests:
+          - unique
+          - not_null
+      - name: address
+      - name: zipcode
+        tests:
+          - max_five_digit_zipcode
+      - name: state
+      - name: country
+        tests:
+          - country_is_united_states
+
+  - name: stg_events 
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - not_null
+      - name: session_id
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('stg_users')
+              field: user_id
+      - name: page_url
+      - name: created_at
+      - name: event_type
+        tests:
+          - accepted_values:
+              values: ['add_to_cart', 'checkout', 'page_view', 'package_shipped']
+      - name: order_id
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+
   - name: stg_orders
     columns:
       - name: order_id
@@ -26,8 +70,14 @@ models:
               field: address_id
       - name: created_at
       - name: order_cost
+        tests: 
+          - positive_values
       - name: shipping_cost
+        tests:
+          - positive_values
       - name: order_total
+        tests:
+          - positive_values
       - name: tracking_id
       - name: shipping_service
         tests:
@@ -48,7 +98,11 @@ models:
           - not_null
       - name: name
       - name: price
+        tests:
+          - positive_values
       - name: inventory
+        tests:
+          - positive_values
 
   - name: stg_promos
     columns:
@@ -57,21 +111,12 @@ models:
           - unique
           - not_null 
       - name: discount 
-      - name: status 
-
-  - name: stg_users 
-    columns:
-      - name: user_id
         tests:
-          - unique
-          - not_null 
-      - name: first_name
-      - name: last_name
-      - name: email
-      - name: phone_number
-      - name: created_at
-      - name: updated_at
-      - name: address_id
+          - positive_values
+      - name: status 
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive']
 
   - name: stg_order_items
     columns:
@@ -91,31 +136,20 @@ models:
         tests:
           - positive_values
 
-  - name: stg_events 
+  - name: stg_users 
     columns:
-      - name: event_id
-        tests:
-          - unique
-          - not_null
-      - name: session_id
       - name: user_id
         tests:
-          - relationships:
-              to: ref('stg_users')
-              field: user_id
-      - name: page_url
+          - unique
+          - not_null 
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: phone_number
       - name: created_at
-      - name: event_type
-      - name: order_id
-      - name: product_id
-
-  - name: stg_addresses
-    columns:
+      - name: updated_at
       - name: address_id
         tests:
-          - unique
-          - not_null
-      - name: address
-      - name: zipcode
-      - name: state
-      - name: country
+          - relationships:
+              to: ref('stg_addresses')
+              field: address_id
