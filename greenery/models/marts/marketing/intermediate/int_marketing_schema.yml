@@ -10,6 +10,8 @@ models:
     - name: email
     - name: phone_number
     - name: zipcode
+      tests:
+        - max_five_digit_zipcode
     - name: state
     - name: country
     - name: order_id
