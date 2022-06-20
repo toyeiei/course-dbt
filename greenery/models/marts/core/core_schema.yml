@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: fact_orders
+    description: fact orders table for BI and data analysis
     columns:
       - name: order_id
       - name: promo_id
@@ -26,15 +27,23 @@ models:
       - name: status
   
   - name: dim_products 
+    description: product dimension table
     columns: 
       - name: product_id
+        tests:
+          - not_null
+          - unique
       - name: product_name
       - name: product_price
       - name: inventory
 
   - name: dim_users 
+    description: users dimension table
     columns:
       - name: user_id 
+        tests:
+          - not_null
+          - unique
       - name: first_name
       - name: last_name
       - name: email
@@ -44,8 +53,12 @@ models:
       - name: address_id
 
   - name: dim_promos
+    description: promo dimension table
     columns:
-      - name: promo_id 
+      - name: promo_id
+        tests:
+          - not_null
+          - unique
       - name: discount 
       - name: status 
   

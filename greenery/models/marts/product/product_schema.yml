@@ -4,6 +4,9 @@ models:
   - name: fact_page_views
     columns:
       - name: event_id
+        tests:
+          - not_null
+          - unique
       - name: session_id
       - name: user_id
       - name: page_url
