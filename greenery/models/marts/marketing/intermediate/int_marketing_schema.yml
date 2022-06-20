@@ -2,6 +2,7 @@ version: 2
 
 models: 
   - name: int_po_users_joined 
+    description: intermediate table joining orders, products, promotions and users
     columns:
     - name: user_id
     - name: first_name 

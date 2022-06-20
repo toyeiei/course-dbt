@@ -2,6 +2,7 @@ version: 2
 
 models: 
   - name: int_orders_users_promos_joined 
+    description: intermediate table joining orders with users and promos data
     columns:
     - name: order_id
     - name: promo_id
